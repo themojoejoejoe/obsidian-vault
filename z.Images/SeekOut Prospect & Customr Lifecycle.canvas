@@ -1,0 +1,8 @@
+{
+	"nodes":[
+		{"id":"6ad808fcde7380f3","type":"text","text":"**Prospect**","x":-500,"y":-420,"width":120,"height":50,"color":"3"},
+		{"id":"08e26576943cba8e","type":"text","text":"**Engaged**","x":-300,"y":-420,"width":120,"height":50,"color":"3"},
+		{"id":"8b96cac139ad4747","type":"text","text":"**MQL**","x":-100,"y":-420,"width":120,"height":50,"color":"3"}
+	],
+	"edges":[]
+}

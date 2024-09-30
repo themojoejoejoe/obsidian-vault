@@ -1,0 +1,32 @@
+{
+	"nodes":[
+		{"id":"f2c038c4d92143b3","type":"file","file":"SeekOut/Notes/2024/02-February/2024-02-29 - Self-Service Licensing Flow.md","x":-660,"y":-360,"width":620,"height":720},
+		{"id":"fc42e3aec5950368","type":"text","text":"## Option 1: Email","x":200,"y":-150,"width":250,"height":60},
+		{"id":"98c93fe097945790","type":"text","text":"*Does Marketo have values in the 3 required fields?*","x":200,"y":-60,"width":250,"height":60},
+		{"id":"0b9b653bffe26742","type":"text","text":"### ZoomInfo Enrichment Requested","x":360,"y":120,"width":230,"height":50},
+		{"id":"eb00c60a79c94708","type":"text","text":"### Does customer meet qualification criteria?","x":60,"y":240,"width":250,"height":60},
+		{"id":"a1bc98f867c07875","type":"text","text":"# User fills out qualification form","x":475,"y":-280,"width":320,"height":50},
+		{"id":"fccd4204a787cbc0","type":"text","text":"## Option 2: API Call","x":820,"y":-150,"width":250,"height":60},
+		{"id":"5244d874bfc94c33","type":"text","text":"### User is sent email with secure link to complete purchase process","x":-20,"y":420,"width":250,"height":80},
+		{"id":"6a5a69082071f4a6","type":"text","text":"### User is sent email with rejection message and CTA to contact sales/book a meeting","x":245,"y":420,"width":230,"height":100},
+		{"id":"e539bd31b1a2dc89","type":"text","text":"*Does Marketo have values in the 3 required fields?*","x":820,"y":-60,"width":250,"height":60},
+		{"id":"2015314fa407fe98","type":"text","text":"### Does customer meet qualification criteria?","x":635,"y":60,"width":250,"height":60},
+		{"id":"64acbf06a6a3e50a","type":"text","text":"### User is redirected to purchase page to complete flow","x":635,"y":220,"width":250,"height":100},
+		{"id":"76adc6d9849f285f","type":"text","text":"### User is redirected to a page with instructions to contact sales/book a meeting","x":900,"y":220,"width":230,"height":100}
+	],
+	"edges":[
+		{"id":"b4c291f192b39def","fromNode":"98c93fe097945790","fromSide":"bottom","toNode":"eb00c60a79c94708","toSide":"top","label":"Yes"},
+		{"id":"e8cad55143f867f2","fromNode":"98c93fe097945790","fromSide":"bottom","toNode":"0b9b653bffe26742","toSide":"top","label":"No"},
+		{"id":"6b43b76f7dae9ebc","fromNode":"a1bc98f867c07875","fromSide":"left","toNode":"fc42e3aec5950368","toSide":"top"},
+		{"id":"131e41d146be492a","fromNode":"a1bc98f867c07875","fromSide":"right","toNode":"fccd4204a787cbc0","toSide":"top"},
+		{"id":"6ca016c95cddf011","fromNode":"fc42e3aec5950368","fromSide":"bottom","toNode":"98c93fe097945790","toSide":"top"},
+		{"id":"702d454004cd3383","fromNode":"0b9b653bffe26742","fromSide":"bottom","toNode":"eb00c60a79c94708","toSide":"right"},
+		{"id":"9c3342da8b3b55eb","fromNode":"eb00c60a79c94708","fromSide":"bottom","toNode":"5244d874bfc94c33","toSide":"top","label":"Yes"},
+		{"id":"a7269e4654a556a4","fromNode":"eb00c60a79c94708","fromSide":"bottom","toNode":"6a5a69082071f4a6","toSide":"top","label":"No"},
+		{"id":"63015d3d3c02ca34","fromNode":"fccd4204a787cbc0","fromSide":"bottom","toNode":"e539bd31b1a2dc89","toSide":"top"},
+		{"id":"348ae87d78dd2067","fromNode":"e539bd31b1a2dc89","fromSide":"left","toNode":"2015314fa407fe98","toSide":"top","label":"Yes"},
+		{"id":"405d0acefbbf960e","fromNode":"2015314fa407fe98","fromSide":"bottom","toNode":"64acbf06a6a3e50a","toSide":"top","label":"Yes"},
+		{"id":"e13e02a16ab6ad9a","fromNode":"2015314fa407fe98","fromSide":"right","toNode":"76adc6d9849f285f","toSide":"top","label":"No"},
+		{"id":"0881e593ae869503","fromNode":"e539bd31b1a2dc89","fromSide":"right","toNode":"76adc6d9849f285f","toSide":"right","label":"No"}
+	]
+}

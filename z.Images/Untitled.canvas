@@ -1,0 +1,16 @@
+{
+	"nodes":[
+		{"id":"47a036b92b7efe36","x":0,"y":-140,"width":250,"height":90,"type":"text","text":"Snowflake"},
+		{"id":"5eeb265644226d26","x":260,"y":-285,"width":250,"height":75,"type":"text","text":"MixPanel"},
+		{"id":"3a348febc25948d1","type":"text","text":"Marketo","x":0,"y":60,"width":250,"height":90},
+		{"id":"b2df49c59fcc23e8","type":"text","text":"Tableau","x":-260,"y":-292,"width":250,"height":90},
+		{"id":"bde362f00cd35f02","type":"text","text":"FiveTran","x":-260,"y":-30,"width":250,"height":90}
+	],
+	"edges":[
+		{"id":"0cb7f9252e5cee7c","fromNode":"5eeb265644226d26","fromSide":"bottom","toNode":"47a036b92b7efe36","toSide":"right"},
+		{"id":"8aad189f69b66f9e","fromNode":"3a348febc25948d1","fromSide":"top","toNode":"47a036b92b7efe36","toSide":"bottom"},
+		{"id":"1ef5ad4b8a849cbc","fromNode":"47a036b92b7efe36","fromSide":"left","toNode":"b2df49c59fcc23e8","toSide":"bottom"},
+		{"id":"5884dbbd3f166086","fromNode":"47a036b92b7efe36","fromSide":"left","toNode":"bde362f00cd35f02","toSide":"top","color":"3"},
+		{"id":"17b7f5811aabd979","fromNode":"bde362f00cd35f02","fromSide":"bottom","toNode":"3a348febc25948d1","toSide":"left","color":"3"}
+	]
+}

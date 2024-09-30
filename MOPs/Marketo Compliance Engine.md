@@ -9,7 +9,7 @@ There are two triggers that manage this program:
 2. *B - Region Change*
 
 In either scenario, another campaign is requested (`010 - Sort Into Program Processing Group`) to sort the record into the appropriate compliance bucket.
-!![Pasted image 20240214082521](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240214082521.png)
+!![Pasted image 20240214082521](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240214082521.png?token=GHSAT0AAAAAACYGAAE3EK75ZQGMDDLMML5MZX2VMMA))
 
  > [!warning] Custom Field Creation Required
 > This program references several custom fields: `Compliance - Processing Group`, `Compliance - Explicit Opt-in`, `Compliance - US Opt-in`, `Compliance - Consent History`, `Compliance - Consent Status`, `Compliance - Explicit Opt-in Date`, `Compliance - Double Opt-in Date`. You can name these fields anything you want, but they establish definitions the rest of this program relies upon. As a best practice for clarity, I recommend appending `Compliance -` to the beginning of each field name to create a set of fields clearly designated for this purpose.

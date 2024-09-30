@@ -5,15 +5,16 @@ const path = require('path');
 const mdDirectory = './MOPs'; 
 
 // Base URL for raw GitHub content
-const githubBaseUrl = 'https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/refs/heads/main/MOPs/images/';
+const githubBaseUrl = 'https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/';
 
-// Function to update image paths in markdown
+// Function to update image paths in markdown and encode spaces
 const updateImagePaths = (filePath) => {
   const fileContent = fs.readFileSync(filePath, 'utf8');
 
-  // Regex to find image references in markdown
-  const updatedContent = fileContent.replace(/!\[(.*?)\]\((Pasted image.*?)\)/g, (match, altText, imageName) => {
-    const newUrl = `${githubBaseUrl}${encodeURIComponent(imageName)}`;
+  // Regex to find image references in markdown and remove | and anything after it
+  const updatedContent = fileContent.replace(/!\[(.*?)\]\((Pasted image[^|)]+)(?:\|.*)?\)/g, (match, altText, imageName) => {
+    const encodedImageName = encodeURIComponent(imageName.trim()); // Encode spaces
+    const newUrl = `${githubBaseUrl}${encodedImageName}`;
     return `![${altText}](${newUrl})`;
   });
 

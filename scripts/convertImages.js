@@ -11,20 +11,23 @@ const githubBaseUrl = 'https://raw.githubusercontent.com/themojoejoejoe/obsidian
 const updateImagePaths = (filePath) => {
   const fileContent = fs.readFileSync(filePath, 'utf8');
 
-  // Regex to find image references with extra brackets or local paths
-  const updatedContent = fileContent.replace(/!\[\[(.*?)\]\]/g, (match, imageName) => {
-    let encodedImageName = encodeURIComponent(imageName.trim()); // Encode spaces
-
-    // Check if the file exists in the z.Images folder
-    const imageFilePath = path.join('./z.Images', encodedImageName);
-
-    if (!fs.existsSync(imageFilePath)) {
-      console.warn(`Warning: Image ${encodedImageName} not found in z.Images folder.`);
+  // Regex to find image references in markdown and ensure correct paths
+  const updatedContent = fileContent.replace(/!\[(.*?)\]\((.*?)\)/g, (match, altText, imagePath) => {
+    // Remove any existing raw.githubusercontent URLs from imagePath to avoid duplication
+    const cleanImagePath = imagePath.replace(/https%3A%2F%2Fraw\.githubusercontent\.com/g, '').trim();
+    
+    // Extract the filename from the imagePath
+    const cleanedImageName = cleanImagePath.split('/').pop();
+    
+    // Check if the path already contains the base GitHub URL
+    if (cleanedImageName.includes('Pasted')) {
+      const encodedImageName = encodeURIComponent(cleanedImageName); // Encode spaces
+      const newUrl = `${githubBaseUrl}${encodedImageName}`;
+      return `![${altText}](${newUrl})`;
+    } else {
+      // If it's already a valid GitHub URL, don't change it
+      return match;
     }
-
-    // Use GitHub base URL for images
-    const newUrl = `${githubBaseUrl}${encodedImageName}`;
-    return `![${imageName}](${newUrl})`;
   });
 
   // Write the updated content back to the file

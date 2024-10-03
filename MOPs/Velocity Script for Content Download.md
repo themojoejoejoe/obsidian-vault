@@ -453,7 +453,7 @@ Generally, you want to make the form as brief as possible, using the minimum num
 1. **Email Address** – so you have a unique identifier for the record that can either create a new record in Marketo or associate the form submission with an existing one.
 2. **Country** – so you can know what compliance laws apply, ensuring you leverage the appropriate opt-in policies (read: you might be able to add this person to your mailable database if the proper consent is provided)
 3. **A Scratch field** – you'll configure this Field Type as "Checkboxes," and in this example we call a field named `Misc - Ops Field String 01`
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/https%3A%2F%2Fraw.githubusercontent.com%2Fthemojoejoejoe%2Fobsidian-vault%2Fmain%2Fz.Images%2FPasted%2520image%252020240222191311.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240222191311.png)
 >[!tip] Hidden Fields + Visibility Rules
 >It is highly recommended that you leverage your standard visibility rules for consent/opt-in language, as well as any hidden fields you may want to capture. The consent/opt-in language provides an opportunity to gather the appropriate consent for the country a user indicates on the form and potentially enables you to grow you mailable database. For certain use cases (like in-booth content download forms), you can even hardcode certain parameters to ensure any new leads are attributed to the correct Lead Source.
 
@@ -471,12 +471,12 @@ Select All |Select All
 
 ### Marketo Program Setup
 Simply place the above velocity script into a program-level token (name it whatever you wish), and reference that token in the body of an email.
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/https%3A%2F%2Fraw.githubusercontent.com%2Fthemojoejoejoe%2Fobsidian-vault%2Fmain%2Fz.Images%2FPasted%2520image%252020240222192309.png)
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/https%3A%2F%2Fraw.githubusercontent.com%2Fthemojoejoejoe%2Fobsidian-vault%2Fmain%2Fz.Images%2FPasted%2520image%252020240222192228.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240222192309.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240222192228.png)
 
 >[!warning] There are many templates, this one is mine
 >Your email experience - and the HTML within the velocity script above – will vary based on your email template. As with all emails, ensure you test the experience thoroughly, filling out the form and selecting every content asset. This will enable you to receive a functional version of the email the same way your customers/prospects will, and help you confirm the experience is as you intended.
 
 The beauty of this approach is that you can build it into your program templates (email, landing page, trigger, and even a static list if you're as much a control freak as me) and minimize the amount of work/level of effort required to repeat the experience across similar campaign types. 
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240222192643.png%7C300)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240222192643.png%257C300)

@@ -9,11 +9,11 @@ Basic is not necessarily bad. The model in this guide leverages a slighly modifi
 
 To understand this model fully, including how records move from stage to stage, please review the individual stage definitions following this image:
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240216123122.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images//themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240216123122.png)
 
 
 ### Prospect Lifecycle Stage Definitions & Transition Rules
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240216123158.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images//themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240216123158.png)
 ﻿﻿
 #### Golden Path:
 
@@ -41,7 +41,7 @@ These stages refer to a derivation from the ideal golden path above.
 
 ### Customer Lifecycle Stage Definitions & Transition Rules
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240216123400.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images//themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240216123400.png)
 
 ﻿﻿
 
@@ -88,7 +88,7 @@ Campaigns are classified in 3 ways:
 
 There are also a number of static lists this program refers to. These are useful for placing people in/out to inform choice steps, error handling, etc.
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240228170811.png%257C400)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240228170811.png%7C400)
 
 ### 00 - OP: Person is Created
 This is abbreviated as OP because it is the starting campaign for *operational* processing upon a new record being created in Marketo. Doesn't matter where they came from, this will *always* be the first trigger a new record qualifies for... Provided you use the "person was created trigger" sparingly. 
@@ -100,21 +100,21 @@ The smart list is literally just the trigger. If you can't figure this part out,
 
 I believe in you.
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240228172357.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images//themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240228172357.png)
 
 The flow simply adds members to a static list to confirm processing began (which is later referenced by other smart campaigns), then in turn requests the next campaign in the sequence.
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240228172452.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images//themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240228172452.png)
 
 ### 01 - STGD: Send to Enrichment
 If you use a 3P service to enrich data, the best time to do it is upon initial entry to the database. *How* this campaign does that will depend on your particular service. For example, some services rely on calling a webhook. Due to API call limits, you may want to throttle what records you enrich based on some sort of internally defined criteria. That can be done from whatever campaign this calls
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240228172859.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images//themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240228172859.png)
 
 ### 02 - STGD: Send to Data Management/Standardization
 This trigger kicks off any data management/standardization campaigns you may have configured. I know, shocking stuff.
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240228173959.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images//themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240228173959.png)
 The flow will ultimately depend on what sort of data management campaigns you have constructed in your instance, but this example is a fairly common one. This flow executes campaigns to:
 
 1. normalize country values to 2-letter ISO standards
@@ -122,36 +122,36 @@ The flow will ultimately depend on what sort of data management campaigns you ha
 3. Categorize Job Role based on Title
 4. Categorize Job Level based on Title
 5. Request demographic scoring to begin
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240228181650.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images//themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240228181650.png)
 
 
 
 ### 03 - STGD: Send to Demographic Gating
 This setup initiates [demographic scoring](obsidian://open?vault=Mesa&file=Personal%2FMOPs%2FScoring) and will add any members who do not complete demographic scoring withing the given wait period to static lists which can then be used to trigger alerts.
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240228182010.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images//themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240228182010.png)
 ### 10 - OP: Initiate Remaining Processing
 This campaign requests all processes that either rely on data provided by the staged processes above or can run independently (thus the ASYNC prefix)
 
 In this example, the primary trigger is when a record is added to the static list for demographic "gating" being completed. Members are added to this list from within the [demographic scoring](obsidian://open?vault=Mesa&file=Personal%2FMOPs%2FScoring) program.
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240228182253.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images//themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240228182253.png)
 
 ### 11 - ASYNC: Send to Person Sourcing
 The asynchronous jobs in this program are intended to run after all other critical steps are completed in the right order (they're asynchronous because the timing of these jobs won't affect other processing).
 
 This first one ensures that a record is assigned the most appropriate Lead Source (aka: *Person Source* in Marketo) and Lead Source Detail (if present/known). This is simply a campaign that requests another program to run:
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240909074239.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images//themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240909074239.png)
 
 ### 12 - ASYNC: Send to Privacy/Compliance
 This request campaign requests the program summarized in [Marketo Compliance Engine](https://publish.obsidian.md/moperator/MOPs/Marketo+Compliance+Engine)
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240909074259.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images//themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240909074259.png)
 
 ### 13 - ASYNC: Send to Lifecycle Processing
 Now that all critical initial processing has been completed for a new record, the record is routed to the lifecycle program to determine which lifecycle stage they are in.
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240909074448.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images//themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240909074448.png)
 
 
 ## Lifecycle Processing
@@ -162,16 +162,16 @@ This program is organized into a series of folders in numerical order of current
 1. Smart List to Define Stage Definitions
 2. Smart Campaigns (triggered and executable) to stamp appropriate values
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240909074646.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images//themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240909074646.png)
 
 >[!question] Why break out every step as a separate executable campaign?
 >This approach makes the lifecycle model more modular, which has two primary benefits: 1/ it makes it easy to expand/build upon the model, and 2/ it makes it easy to understand the order of events at a high level, even for the less experienced Marketo user.
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240909075721.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images//themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240909075721.png)
 
 ### 000 - Sort into Lifecycle Status
 This is the first campaign requested to kick off the entire process and is comprised of a single flowstep with a choice dedicated to each lifecycle stage. As a result, the stages are ordered in reverse from "C-CW" (Customer Closed Won) through Prospect.
 
 For sake of space, the screenshot only contains the choices above the fold, but you can see how they simply reference the definitions smart list associated with each stage and subsequently call that stage's "controller" - which is another request campaign.
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/%252Fthemojoejoejoe%252Fobsidian-vault%252Fmain%252Fz.Images%252FPasted%252520image%25252020240909081554.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images//themojoejoejoe/obsidian-vault/main/z.Images/Pasted%2520image%252020240909081554.png)
 

@@ -7,34 +7,35 @@ const mdDirectory = './MOPs';
 // Base URL for raw GitHub content
 const githubBaseUrl = 'https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/';
 
-// Function to update image paths in markdown and encode spaces
+// Function to clean, decode, and update image paths
 const updateImagePaths = (filePath) => {
-  const fileContent = fs.readFileSync(filePath, 'utf8');
+  let fileContent = fs.readFileSync(filePath, 'utf8');
 
-  // Regex to find image references in markdown and ensure correct paths
+  // Step 1: Clean and decode any double-encoded URLs
+  fileContent = fileContent.replace(/%2520/g, '%20'); // Fix double-encoded spaces
+  fileContent = fileContent.replace(/%252F/g, '/');   // Fix double-encoded slashes
+  fileContent = fileContent.replace(/%25/g, '%');     // Fix any other double-encoded percent signs
+
+  // Step 2: Process each image reference
   const updatedContent = fileContent.replace(/!\[(.*?)\]\((.*?)\)/g, (match, altText, imagePath) => {
-    // Remove any existing raw.githubusercontent URLs from imagePath to avoid duplication
-    const cleanImagePath = imagePath.replace(/https%3A%2F%2Fraw\.githubusercontent\.com/g, '').trim();
-    
-    // Extract the filename from the imagePath
-    const cleanedImageName = cleanImagePath.split('/').pop();
-    
-    // Check if the path already contains the base GitHub URL
-    if (cleanedImageName.includes('Pasted')) {
-      const encodedImageName = encodeURIComponent(cleanedImageName); // Encode spaces
-      const newUrl = `${githubBaseUrl}${encodedImageName}`;
-      return `![${altText}](${newUrl})`;
-    } else {
-      // If it's already a valid GitHub URL, don't change it
-      return match;
+    // Clean the image path from any unnecessary encoding or raw links
+    let cleanImagePath = imagePath.trim();
+
+    // Check if the imagePath already contains the GitHub base URL or not
+    if (!cleanImagePath.startsWith(githubBaseUrl)) {
+      const cleanedImageName = cleanImagePath.split('/').pop(); // Get only the image name (e.g., Pasted image...)
+      const encodedImageName = encodeURIComponent(cleanedImageName); // Properly encode the image name
+      cleanImagePath = `${githubBaseUrl}${encodedImageName}`; // Combine with the base URL
     }
+
+    return `![${altText}](${cleanImagePath})`; // Return the updated image path
   });
 
-  // Write the updated content back to the file
+  // Step 3: Write the fixed content back to the file
   fs.writeFileSync(filePath, updatedContent, 'utf8');
 };
 
-// Loop through the markdown directory
+// Loop through the markdown directory and apply the image path updates
 fs.readdirSync(mdDirectory).forEach(file => {
   if (path.extname(file) === '.md') {
     const filePath = path.join(mdDirectory, file);
@@ -42,4 +43,4 @@ fs.readdirSync(mdDirectory).forEach(file => {
   }
 });
 
-console.log('Image paths updated!');
+console.log('Image paths cleaned, decoded, and updated successfully!');

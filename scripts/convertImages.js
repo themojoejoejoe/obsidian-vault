@@ -11,11 +11,20 @@ const githubBaseUrl = 'https://raw.githubusercontent.com/themojoejoejoe/obsidian
 const updateImagePaths = (filePath) => {
   const fileContent = fs.readFileSync(filePath, 'utf8');
 
-  // Regex to find image references in markdown and remove | and anything after it
-  const updatedContent = fileContent.replace(/!\[(.*?)\]\((Pasted image[^|)]+)(?:\|.*)?\)/g, (match, altText, imageName) => {
-    const encodedImageName = encodeURIComponent(imageName.trim()); // Encode spaces
+  // Regex to find image references with extra brackets or local paths
+  const updatedContent = fileContent.replace(/!\[\[(.*?)\]\]/g, (match, imageName) => {
+    let encodedImageName = encodeURIComponent(imageName.trim()); // Encode spaces
+
+    // Check if the file exists in the z.Images folder
+    const imageFilePath = path.join('./z.Images', encodedImageName);
+
+    if (!fs.existsSync(imageFilePath)) {
+      console.warn(`Warning: Image ${encodedImageName} not found in z.Images folder.`);
+    }
+
+    // Use GitHub base URL for images
     const newUrl = `${githubBaseUrl}${encodedImageName}`;
-    return `![${altText}](${newUrl})`;
+    return `![${imageName}](${newUrl})`;
   });
 
   // Write the updated content back to the file

@@ -3,13 +3,15 @@ const path = require('path');
 
 // Directory where markdown files are stored
 const mdDirectory = './MOPs'; 
+const imageDirectory = './z.Images'; // Directory where images are stored
 
 // Base URL for raw GitHub content
 const githubBaseUrl = 'https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/';
 
-// Function to clean, decode, and update image paths
+// Function to clean, decode, rename, and update image paths
 const updateImagePaths = (filePath) => {
   let fileContent = fs.readFileSync(filePath, 'utf8');
+  let imageCounter = 1; // Counter for renaming images
 
   // Step 1: Clean and decode any double-encoded URLs
   fileContent = fileContent.replace(/%2520/g, '%20'); // Fix double-encoded spaces
@@ -21,11 +23,22 @@ const updateImagePaths = (filePath) => {
     // Clean the image path from any unnecessary encoding or raw links
     let cleanImagePath = imagePath.trim();
 
-    // Check if the imagePath already contains the GitHub base URL or not
-    if (!cleanImagePath.startsWith(githubBaseUrl)) {
-      const cleanedImageName = cleanImagePath.split('/').pop(); // Get only the image name (e.g., Pasted image...)
-      const encodedImageName = encodeURIComponent(cleanedImageName); // Properly encode the image name
-      cleanImagePath = `${githubBaseUrl}${encodedImageName}`; // Combine with the base URL
+    // Rename "Pasted image" files to simpler names
+    const imageNameMatch = cleanImagePath.match(/Pasted image.*\.png/);
+    if (imageNameMatch) {
+      // Generate new image name
+      const newImageName = `image-${String(imageCounter).padStart(3, '0')}.png`;
+      const newImagePath = path.join(imageDirectory, newImageName);
+
+      // Rename the actual file if it exists
+      const originalImagePath = path.join(imageDirectory, imageNameMatch[0]);
+      if (fs.existsSync(originalImagePath)) {
+        fs.renameSync(originalImagePath, newImagePath);
+      }
+
+      // Update image reference in markdown
+      cleanImagePath = `${githubBaseUrl}${newImageName}`;
+      imageCounter++; // Increment counter for next image
     }
 
     return `![${altText}](${cleanImagePath})`; // Return the updated image path
@@ -43,4 +56,4 @@ fs.readdirSync(mdDirectory).forEach(file => {
   }
 });
 
-console.log('Image paths cleaned, decoded, and updated successfully!');
+console.log('Image paths cleaned, renamed, and updated successfully!');

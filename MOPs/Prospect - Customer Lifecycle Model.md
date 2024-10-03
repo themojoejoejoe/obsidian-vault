@@ -175,3 +175,66 @@ This is the first campaign requested to kick off the entire process and is compr
 For sake of space, the screenshot only contains the choices above the fold, but you can see how they simply reference the definitions smart list associated with each stage and subsequently call that stage's "controller" - which is another request campaign.
 ![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240909081554.png)
 
+#### Program Structure Basics
+When the above `Sort into Lifecycle Status` trigger fires, it requests the appropriate lifecycle status based on definitions. The structure of each lifecycle folder follows this format:
+
+- Definition Smart List
+- For MQLs and CQLs, any special triggered conditions (such as auto-MQL scenarios, score changes meeting the MQL threshold, etc.)
+- A controller that ensures the record qualifies for a given lifecycle stage and runs a series of executable campaigns
+- An executable campaign for each primary data value change
+
+
+> [!faq] Why so many executables?
+> You're probably detecting a theme: it helps to make the structure more modular. If we ever decide to add another step to the flow, we simply clone an executable, make the necessary changes, and add it to the controller.
+
+
+
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020241003101916.png)
+For the sake of brevity, we won't explore each individual folder. But we'll focus on MQLs as an example that can be applied to the rest.
+
+> [!note] MQLs are probably the most "complicated" setup
+> Almost all other stages don't have multiple triggers to qualify them for a given stage.
+> 
+
+### !300 - MQL Definition
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020241003102947.png)
+See how we setup [lead scoring](https://www.joe-reitz/com/work/lead-scoring), but this definition is essentially saying "they meet our MQL definition in terms of rating and are not at Customer Account." Some of our triggers for auto-MQL scenarios bypass these scoring requirements.
+
+### 300a - MQL: Status Trigger (Auto-MQL)
+This set of triggers bypasses the scoring requirement for key actions that we deem to be "automatic MQLs," such as demo requests.
+
+In addition to demo requests (via LinkedIn, our website, or even review sites like G2), we also have a "Campaign is Requested" trigger to account for records we manually "fast-track" as MQLs (i.e. at tradeshows, we may mark a lead as hot for follow-up and use this mechanism to ensure they become MQLs attributed to the appropriate channel/campaign). 
+
+The flow for all Status Triggers simply calls the MQL Controller Smart Campaign.
+
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020241003104622.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020241003112213.png)
+
+### 300b - MQL Status trigger (Rating)
+The MQL Status trigger campaign listens for a person rating change over the threshold for an existing record to progress forward into the MQL Lifecycle stage. 
+
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020241003112300.png)
+### 301 - MQL: Controller
+Regardless of *how* a record becomes an MQL, the MQL controller ensures the appropriate data value changes and executable campaigns are run.
+
+**Filter Logic:** `1 and ((2 and 3) or (4 or 5 or 6)) and (7 or 8) and 9`
+
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020241003112455.png)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020241003112549.png)
+
+### 310 - MQL: Date/Time Stamp
+It's helpful to have a date stamp field for every lifecycle stage, and a "first" date stamp field as well. In effect, this causes the standard date stage field to be the most recent time someone achieved a given stage, and the "first" date stamp field being the first time it ever happened.
+
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020241003112650.png)
+
+### 320 - MQL: Set Contact Status
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020241003113109.png)
+
+### 330 - MQL: Sync to SFDC
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020241003113136.png)
+
+### 340 - MQL: Create Task
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020241003113159.png)
+
+## Other Lifecycle Stages
+All other stages follow similar structure and flows, with Triggers and controllers firing as appropriate. There are also detour stages to help understand when a record is recycled (i.e. at SAL or SQL) to help identify potential issues and processes for improvement.

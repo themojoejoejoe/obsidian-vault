@@ -1,4 +1,5 @@
-Marketo Compliance Engine
-Prospect - Customer Lifecycle Model
-Lead Scoring
-Bounce House
+[Marketo Compliance Engine](https://www.joe-reitz.com/work/marketo-compliance-engine)
+[Prospect - Customer Lifecycle Model](https://www.joe-reitz.com/work/prospect-customer-lifecycle-model)
+[Lead Scoring](https://www.joe-reitz.com/work/lead-scoring)
+[Bounce House](https://www.joe-reitz.com/work/bounce-house)
+[Self-Service Licensing Flow](https://www.joe-reitz.com/work/ssl-flow)

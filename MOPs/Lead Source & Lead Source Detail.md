@@ -6,7 +6,7 @@ How you set up this program will depend on Channel and Subchannel definitions yo
 >The approach outlined here requires several fields you may not have in your database: `Lead Source Category`, `utm_medium`, `utm_source` (highly recommend you create fields for all the utm parameters and use hidden fields on your forms to capture), `Lead Source (Most Recent)` and `Lead Source Detail (Most Recent)`. Lead Source Category can be used as a coarse way to categorize channels as Outbound, Inbound, Referral, or Legacy (read: this is so old we have no idea but don't want a blank field to create confusion) 
 
 # LS & LSD Management (The Build)
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240222105506.png%7C400)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240222105506.png)
 ## A - Initial Processing Requested
 This trigger is called from the [[Prospect - Customer Lifecycle Model]] program whenever a new record is created. The only requirement to flow through this trigger is that `Person Source` is currently empty.
 
@@ -21,7 +21,7 @@ The Flow then executes the `100 - Source Assignment: Router` campaign
 ## 1. Manage Source Fields
 The channels and subchannels you track may be different than the below, but the common thread here is that the primary executable campaign `100 - Source Assignment: Router` sends records to the appropriate flow based on the UTM parameters present as they enter the database.
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240222110927.png%7C400)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240222110927.png)
 
 ### 100 - Source Assignment: Router
 Executable campaigns are cool because there's no Smart List to setup *and* they complete executing before a record moves on to the next flow step. There are some limitations to be aware of, but more information can be found [here](https://experienceleague.adobe.com/docs/marketo/using/product-docs/core-marketo-concepts/smart-campaigns/flow-actions/execute-campaign.html?lang=en).

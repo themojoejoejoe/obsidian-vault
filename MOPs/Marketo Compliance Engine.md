@@ -9,7 +9,7 @@ There are two triggers that manage this program:
 2. *B - Region Change*
 
 In either scenario, another campaign is requested (`010 - Sort Into Program Processing Group`) to sort the record into the appropriate compliance bucket.
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240214081434.png%7C400)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240214081434.png)
 
  > [!warning] Custom Field Creation Required
 > This program references several custom fields: `Compliance - Processing Group`, `Compliance - Explicit Opt-in`, `Compliance - US Opt-in`, `Compliance - Consent History`, `Compliance - Consent Status`, `Compliance - Explicit Opt-in Date`, `Compliance - Double Opt-in Date`. You can name these fields anything you want, but they establish definitions the rest of this program relies upon. As a best practice for clarity, I recommend appending `Compliance -` to the beginning of each field name to create a set of fields clearly designated for this purpose.
@@ -57,7 +57,7 @@ This campaign will be called if a lead does not qualify for a Privacy Compliance
 ## 01 - Opt Out (no consent required)
 This folder consists of a definitions smart list and a "controller." This controller then calls the appropriate child trigger based on either the value of the `Compliance - Explicit Opt-in` field or smart/static list membership. The lists will be further expounded upon at the end of this section.
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240214105541.png%7C400)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240214105541.png)
 ### 01 - Opt-Out Smart List
 Generally, this applies to the United States.
 
@@ -141,7 +141,7 @@ The following static lists are referenced in the above flows:
 ## 02 - Opt in (explicit consent required)
 Similar to the above, this folder contains definitions and workflows related to the explicit consent bucket.
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240214113449.png%7C400)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240214113449.png)
 ### 02a. Opt-in
 **Smart List:**
 *Advanced Filter Logic: 1 or (2 and 3

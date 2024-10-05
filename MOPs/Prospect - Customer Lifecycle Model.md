@@ -88,7 +88,7 @@ Campaigns are classified in 3 ways:
 
 There are also a number of static lists this program refers to. These are useful for placing people in/out to inform choice steps, error handling, etc.
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240228170811.png%7C400)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240228170811.png)
 
 ### 00 - OP: Person is Created
 This is abbreviated as OP because it is the starting campaign for *operational* processing upon a new record being created in Marketo. Doesn't matter where they came from, this will *always* be the first trigger a new record qualifies for... Provided you use the "person was created trigger" sparingly. 

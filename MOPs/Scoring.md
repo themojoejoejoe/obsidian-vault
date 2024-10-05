@@ -22,7 +22,7 @@ Your triggers may look different as not every business has the same set of requi
 
 For the sake of brevity, this guide won't cover *every* trigger, but the below can help give you a sense of how they are generally structured.
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240229151828.png%7C400)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240229151828.png)
 >[!question] Why "contains" on a fills out form trigger?
 >In this particular instance, Admin Ops occurred in an access-controlled partition. This is an expensive feature, but it is a great way to prevent other users from changing things they aren't authorized to change. For example, you *probably* don't want a marketer with an MQL goal to change how your scoring programs work ;)
 ##### Fills out Contact Us Form
@@ -84,7 +84,7 @@ I like to break events out into 3 classifications to enable unique scoring possi
 >[!tip] Super... Attended?
 >This is just a memorable term I like to use for statuses beyond "attended." This approach enables an additional possibility to score event-type-specific stasuses uniquely. In the case of webinars, this would be attending the on-demand version. In the case of live events (i.e. hosted/field events) and tradeshows, this could be something like attending a session or being marked "hot" (aka: influenced) by the booth staff, attending a sponsored/hosted session, or simply visiting the booth. Tradeshows approach each of these statuses in an additive way, meaning if you first mark someone as visited booth, then attended session, *then* influenced, they'd get points added for each association. Webinars typically only score the attended OR the attended on-demand status, but you still might want to do both to reflect scoring for a hyper-engaged attendee.
 
-![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240229170046.png%7C400)
+![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240229170046.png)
 ![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240229170922.png)
 ![Image Description](https://raw.githubusercontent.com/themojoejoejoe/obsidian-vault/main/z.Images/Pasted%20image%2020240229170937.png)
 
